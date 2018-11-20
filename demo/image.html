@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>QrcodeDecoder - Image</title>
+    </head>
+    <body>
+        <button id="decode">Decode!</button><br>
+        <span id="result"></span><br>
+        <!-- <img src="../test/assets/qrcode.png" alt="qr code" /> -->
+        <script src="../dist/index.aio.js"></script>
+        <script type="module">
+            function main() {
+                var qr = new QrcodeDecoder();
+
+                var btn = document.querySelector('button#decode');
+                var img = document.querySelector('img');
+                var result = document.querySelector('#result');
+
+                btn.onclick = async () => {
+                    // you can also decode from image path
+                    const code = await qr.decodeFromImage('../test/assets/qrcode.png');
+                    // const code = qr.decodeFromImage(img);
+                    console.log(code);
+                    result.innerText = code.data;
+                };
+            }
+            main();
+        </script>
+    </body>
+</html>
