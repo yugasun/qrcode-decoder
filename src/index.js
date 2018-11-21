@@ -259,10 +259,10 @@ class QrcodeDecoder {
         } else if (typeof img === 'string') {
             imgDom = document.createElement('img');
             imgDom.src = img;
-            // const proms = () => new Promise((resolve) => {
-            //     imgDom.onload = () => resolve(true);
-            // });
-            // await proms();
+            const proms = () => new Promise((resolve) => {
+                imgDom.onload = () => resolve(true);
+            });
+            await proms();
         }
 
         let code = false;

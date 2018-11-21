@@ -18,7 +18,7 @@ describe('QrcodeDecoder', function () {
     describe('decodeFromImage', function () {
         it('decode image from img element', function (done) {
             const img = document.createElement('img');
-            img.src = 'test/assets/qrcode.png';
+            img.src = 'demo/assets/qrcode.png';
             img.onload = async function () {
                 const result = await qr.decodeFromImage(img);
                 expect(result.data).to.equal('192.168.1.13:3000');
@@ -28,7 +28,7 @@ describe('QrcodeDecoder', function () {
         });
 
         it('decode image from img url', async function () {
-            const result = await qr.decodeFromImage('test/assets/qrcode.png');
+            const result = await qr.decodeFromImage('demo/assets/qrcode.png');
             expect(result.data).to.equal('192.168.1.13:3000');
         });
 
@@ -47,7 +47,7 @@ describe('QrcodeDecoder', function () {
         it('decode from a video with qrcode', async function () {
             const video = document.createElement('video');
             video.setAttribute('autoplay', true);
-            video.setAttribute('src', 'test/assets/qrcode-video.mp4');
+            video.setAttribute('src', 'demo/assets/qrcode-video.mp4');
 
             const result = await qr.decodeFromVideo(video);
             expect(result.data).to.equal('192.168.1.13:3000');

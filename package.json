@@ -12,10 +12,12 @@
     "build:self": "rollup -c config/rollup.config.js",
     "build:esm": "rollup -c config/rollup.config.esm.js",
     "build:aio": "rollup -c config/rollup.config.aio.js",
-    "build": "npm run clean && npm run build:self && npm run build:esm &&  npm run build:aio",
+    "build": "npm run clean && npm run build:self && npm run build:esm &&  npm run build:aio && npm run copy-file",
+    "copy-file": "cp dist/index.aio.js demo/",
     "test": "npm run lint && npm run build",
     "zuul-test": "zuul --local 8080 --ui mocha-bdd -- test/test.js",
-    "release": "git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags"
+    "release": "git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
+    "deploy": "gh-pages -d demo --remote origin"
   },
   "author": "yugasun",
   "license": "MIT",
@@ -37,14 +39,16 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "expect.js": "0.3.1",
+    "gh-pages": "^2.0.1",
     "jsdom": "^13.0.0",
     "mocha": "3.5.3",
     "mocha-jsdom": "^2.0.0",
     "rimraf": "2.6.2",
-    "rollup": "0.57.1",
+    "rollup": "^0.67.3",
     "rollup-plugin-babel": "3.0.3",
     "rollup-plugin-commonjs": "8.3.0",
     "rollup-plugin-node-resolve": "3.0.3",
+    "rollup-plugin-uglify": "^6.0.0",
     "zuul": "^3.12.0"
   },
   "dependencies": {

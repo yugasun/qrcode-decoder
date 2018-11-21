@@ -1,17 +1,18 @@
-var pkg = require('../package.json');
+const pkg = require('../package.json');
 
-// 兼容 qrcode-decoder 和 @yugasun/qrcode-decoder 
-var name = pkg.name.split('/').pop();
-var version = pkg.version;
+// 兼容 qrcode-decoder 和 @yugasun/qrcode-decoder
+const name = pkg.name.split('/').pop();
+const { version } = pkg;
 
-var banner = 
-`/*!
+const banner = `/* @preserve
  * qrcode-decoder ${version} (https://github.com/yugasun/qrcode-decoder)
  * API https://github.com/yugasun/qrcode-decoder/blob/master/doc/api.md
- * Copyright 2017-${(new Date).getFullYear()} yugasun. All Rights Reserved
+ * Copyright 2017-${new Date().getFullYear()} yugasun. All Rights Reserved
  * Licensed under MIT (https://github.com/yugasun/qrcode-decoder/blob/master/LICENSE)
  */
 `;
 
-exports.name = name;
-exports.banner = banner;
+export default {
+    name,
+    banner,
+};
