@@ -7,8 +7,8 @@
     <body>
         <button id="decode">Decode!</button><br>
         <span id="result"></span><br>
-        <!-- <img src="./assets/qrcode.png" alt="qr code" /> -->
-        <script src="./index.aio.js"></script>
+        <img src="./assets/qrcode.png" alt="qr code" />
+        <script src="./index.aio.min.js"></script>
         <script type="module">
             function main() {
                 var qr = new QrcodeDecoder();
@@ -19,8 +19,8 @@
 
                 btn.onclick = async () => {
                     // you can also decode from image path
-                    const code = await qr.decodeFromImage('./assets/qrcode.png');
-                    // const code = qr.decodeFromImage(img);
+                    // const code = await qr.decodeFromImage('./assets/qrcode.png');
+                    const code = await qr.decodeFromImage(img);
                     console.log(code);
                     result.innerText = code.data;
                 };

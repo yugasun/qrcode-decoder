@@ -6,10 +6,12 @@ import commonjs from 'rollup-plugin-commonjs';
 import { uglify } from 'rollup-plugin-uglify';
 import common from './rollup';
 
+const prod = process.env.NODE_ENV;
+
 export default {
     input: 'src/index.js',
     output: {
-        file: 'dist/index.aio.js',
+        file: prod ? 'dist/index.aio.min.js' : 'dist/index.aio.js',
         format: 'umd',
         // 如果不同时使用 export 与 export default 可打开legacy
         // legacy: true,
@@ -28,20 +30,23 @@ export default {
             runtimeHelpers: true,
             exclude: 'node_modules/**',
         }),
-        uglify({
-            compress: {
-                drop_debugger: true,
-                drop_console: true,
-            },
-            output: {
-                comments: (node, comment) => {
-                    if (comment.type === 'comment2') {
-                        // multiline comment
-                        return /@preserve|@license|@cc_on/i.test(comment.value);
-                    }
-                    return false;
+        prod &&
+            uglify({
+                compress: {
+                    drop_debugger: true,
+                    drop_console: true,
                 },
-            },
-        }),
+                output: {
+                    comments: (node, comment) => {
+                        if (comment.type === 'comment2') {
+                            // multiline comment
+                            return /@preserve|@license|@cc_on/i.test(
+                                comment.value,
+                            );
+                        }
+                        return false;
+                    },
+                },
+            }),
     ],
 };
