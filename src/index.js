@@ -306,6 +306,9 @@ class QrcodeDecoder {
             const track = this.stream.getTracks()[0];
             track.stop();
             this.stream = undefined;
+
+            // fix: clear black bg after camera capture
+            this.videoElem.srcObject = null;
         }
 
         if (this.timerCapture) {
