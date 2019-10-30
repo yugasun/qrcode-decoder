@@ -11,7 +11,7 @@ const prod = process.env.NODE_ENV;
 export default {
     input: 'src/index.js',
     output: {
-        file: prod ? 'dist/index.aio.min.js' : 'dist/index.aio.js',
+        file: prod ? 'dist/qrcode-decoder.min.js' : 'dist/qrcode-decoder.aio.js',
         format: 'umd',
         // 如果不同时使用 export 与 export default 可打开legacy
         // legacy: true,

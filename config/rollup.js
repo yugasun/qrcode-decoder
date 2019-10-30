@@ -5,7 +5,7 @@ const name = pkg.name.split('/').pop();
 const { version } = pkg;
 
 const banner = `/* @preserve
- * qrcode-decoder ${version} (https://github.com/yugasun/qrcode-decoder)
+ * qrcode-decoder ${version} (https://github.com/lijingbo8119/qrcode-decoder)(forked from yugasun/qrcode-decoder)
  * API https://github.com/yugasun/qrcode-decoder/blob/master/doc/api.md
  * Copyright 2017-${new Date().getFullYear()} yugasun. All Rights Reserved
  * Licensed under MIT (https://github.com/yugasun/qrcode-decoder/blob/master/LICENSE)
