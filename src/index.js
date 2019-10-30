@@ -240,7 +240,7 @@ class QrcodeDecoder {
 
     /**
      * Decodes an image from its src.
-     * @param  {DOMElement} imageElem
+     * @param  {DOMElement} img
      * @param  {Object} options     options (optional) - Additional options.
      *  inversionAttempts - (attemptBoth (default), dontInvert, onlyInvert, or invertFirst)
      *  refer to jsqr options: https://github.com/cozmo/jsQR
@@ -259,7 +259,7 @@ class QrcodeDecoder {
         } else if (typeof img === 'string') {
             imgDom = document.createElement('img');
             imgDom.src = img;
-            imgDom.setAttribute("crossOrigin",'Anonymous');
+            imgDom.crossOrigin = 'Anonymous';
             const proms = () => new Promise((resolve) => {
                 imgDom.onload = () => resolve(true);
             });
