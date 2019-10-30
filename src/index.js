@@ -259,6 +259,7 @@ class QrcodeDecoder {
         } else if (typeof img === 'string') {
             imgDom = document.createElement('img');
             imgDom.src = img;
+            imgDom.setAttribute("crossOrigin",'Anonymous');
             const proms = () => new Promise((resolve) => {
                 imgDom.onload = () => resolve(true);
             });
