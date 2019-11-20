@@ -5,24 +5,45 @@
         <title>QrcodeDecoder - Image</title>
     </head>
     <body>
-        <button id="decode">Decode!</button><br>
-        <span id="result"></span><br>
-        <img src="./assets/qrcode.png" alt="qr code" />
+        <section>
+            <h3>Same domain image</h3>
+            <img src="./assets/qrcode.png" alt="qr code" /><br>
+            <button id="decode1">Decode!</button><br>
+            <span id="result1"></span><br>
+        </section>
+        <hr/>
+        <section>
+            <h3>Different domain image</h3>
+            <button id="decode2">Decode!</button><br>
+            <span id="result2"></span><br>
+        </section>
         <script src="./index.aio.min.js"></script>
         <script type="module">
             function main() {
                 var qr = new QrcodeDecoder();
 
-                var btn = document.querySelector('button#decode');
+                var btn1 = document.querySelector('button#decode1');
+                var btn2 = document.querySelector('button#decode2');
+                var result1 = document.querySelector('#result1');
+                var result2 = document.querySelector('#result2');
                 var img = document.querySelector('img');
-                var result = document.querySelector('#result');
 
-                btn.onclick = async () => {
+                btn1.onclick = async () => {
                     // you can also decode from image path
                     // const code = await qr.decodeFromImage('./assets/qrcode.png');
                     const code = await qr.decodeFromImage(img);
                     console.log(code);
-                    result.innerText = code.data;
+                    result1.innerText = code.data;
+                };
+
+                btn2.onclick = async () => {
+                    // you can also decode from image path
+                    // const code = await qr.decodeFromImage('./assets/qrcode.png');
+                    const code = await qr.decodeFromImage('https://yugasun.com/static/wechat.jpg', {
+                        crossOrigin: 'anonymous',
+                    });
+                    console.log(code);
+                    result2.innerText = code.data;
                 };
             }
             main();
