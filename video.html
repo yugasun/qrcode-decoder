@@ -2,6 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>QrcodeDecoder - Video</title>
     </head>
     <body>
@@ -9,14 +11,16 @@
         <span id="result">Click start to scan qrcode.</span><br />
 
         <video src="./assets/qrcode-video.mp4"></video>
-
+        <script src="./lib/vconsole.min.js"></script>
         <script src="./index.aio.min.js"></script>
         <script type="text/javascript">
+            var vConsole = new VConsole();
+            console.log("Hello world");
             function main() {
-                var video = document.querySelector('video');
-                var result = document.querySelector('#result');
-                var start = document.querySelector('#start');
-                var stop = document.querySelector('#stop');
+                var video = document.querySelector("video");
+                var result = document.querySelector("#result");
+                var start = document.querySelector("#start");
+                var stop = document.querySelector("#stop");
                 var qr = new QrcodeDecoder();
 
                 start.onclick = startScan;
@@ -29,8 +33,8 @@
                 async function startScan() {
                     video.play();
                     const code = await qr.decodeFromVideo(video);
-                    console.log('code', code);
-                    result.innerText = 'Result: ' + code.data;
+                    console.log("code", code);
+                    result.innerText = "Result: " + code.data;
                 }
             }
             main();
