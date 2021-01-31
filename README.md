@@ -1,7 +1,6 @@
 # [qrcode-decoder](https://github.com/yugasun/qrcode-decoder)
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yugasun/qrcode-decoder/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/yugasun/qrcode-decoder.svg?branch=master)](https://travis-ci.org/yugasun/qrcode-decoder)
 [![NPM downloads](http://img.shields.io/npm/dm/qrcode-decoder.svg?style=flat-square)](http://www.npmtrends.com/qrcode-decoder)
 
 [简体中文](./README.zh-CN.md) | English
@@ -38,7 +37,7 @@ import QrcodeDecoder from 'qrcode-decoder';
 Using in browser:
 
 ```html
-<script src="node_modules/qrcode-decoder/dist/index.aio.js"></script>
+<script src="https://unpkg.com/qrcode-decoder"></script>
 ```
 
 ## Demo
@@ -57,7 +56,7 @@ Decodes an image from url or an `<img>` element with a `src` attribute set.
 
 ```javascript
 qr.decodeFromImage(img).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 
@@ -69,7 +68,7 @@ Decodes directly from a video with a well specified `src` attribute
 
 ```javascript
 qr.decodeFromVideo(videoElement).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 
@@ -81,7 +80,7 @@ Decodes from a videoElement.
 
 ```javascript
 qr.decodeFromCamera(videoElem).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 
