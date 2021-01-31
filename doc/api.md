@@ -14,7 +14,7 @@ Decodes an image from url or an `<img>` element with a `src` attribute set.
 
 ```javascript
 qr.decodeFromImage(img).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 
@@ -26,7 +26,7 @@ Decodes directly from a video with a well specified `src` attribute
 
 ```javascript
 qr.decodeFromVideo(videoElement).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 
@@ -38,7 +38,7 @@ Decodes from a videoElement.
 
 ```javascript
 qr.decodeFromCamera(videoElem).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 

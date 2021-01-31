@@ -14,7 +14,7 @@ var qr = new QrcodeDecoder();
 
 ```javascript
 qr.decodeFromImage(img).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 
@@ -26,7 +26,7 @@ qr.decodeFromImage(img).then((res) => {
 
 ```javascript
 qr.decodeFromVideo(videoElement).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 
@@ -38,7 +38,7 @@ qr.decodeFromVideo(videoElement).then((res) => {
 
 ```javascript
 qr.decodeFromCamera(videoElem).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 

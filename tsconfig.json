@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "preserveConstEnums": true,
+    "importHelpers": false,
+    "lib": ["esnext", "dom"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "paths": {
+      "*": ["typings/*", "includes/*"]
+    },
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "strict": true,
+    "target": "es5"
+  }
+}

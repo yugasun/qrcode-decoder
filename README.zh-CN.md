@@ -1,7 +1,6 @@
 # [qrcode-decoder](https://github.com/yugasun/qrcode-decoder)
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yugasun/qrcode-decoder/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/yugasun/qrcode-decoder.svg?branch=master)](https://travis-ci.org/yugasun/qrcode-decoder)
 [![NPM downloads](http://img.shields.io/npm/dm/qrcode-decoder.svg?style=flat-square)](http://www.npmtrends.com/qrcode-decoder)
 
 简体中文 | [English](./README.md)
@@ -38,7 +37,7 @@ import QrcodeDecoder from 'qrcode-decoder';
 如果你是浏览器环境
 
 ```html
-<script src="node_modules/qrcode-decoder/dist/index.aio.js"></script>
+<script src="https://unpkg.com/qrcode-decoder"></script>
 ```
 
 ## 示例
@@ -57,7 +56,7 @@ var qr = new QrcodeDecoder();
 
 ```javascript
 qr.decodeFromImage(img).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 
@@ -69,7 +68,7 @@ qr.decodeFromImage(img).then((res) => {
 
 ```javascript
 qr.decodeFromVideo(videoElement).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 
@@ -81,7 +80,7 @@ qr.decodeFromVideo(videoElement).then((res) => {
 
 ```javascript
 qr.decodeFromCamera(videoElem).then((res) => {
-    console.log(res);
+  console.log(res);
 });
 ```
 
