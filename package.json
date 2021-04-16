@@ -2,9 +2,8 @@
   "name": "qrcode-decoder",
   "version": "0.1.2",
   "description": "Tool for decoding qrcode",
-  "main": "dist/index.aio.js",
+  "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
-  "module": "dist/index.esm.js",
   "sideEffects": false,
   "scripts": {
     "build": "ts-node -P scripts/tsconfig.json scripts/bundle.ts umd,esm,aio && npm run copy-file",
