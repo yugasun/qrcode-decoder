@@ -3,8 +3,6 @@
   "version": "0.1.2",
   "description": "Tool for decoding qrcode",
   "main": "dist/index.js",
-  "jsnext:main": "dist/index.esm.js",
-  "module": "dist/index.esm.js",
   "sideEffects": false,
   "scripts": {
     "build": "ts-node -P scripts/tsconfig.json scripts/bundle.ts umd,esm,aio && npm run copy-file",
@@ -60,7 +58,7 @@
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.18.2",
-    "rolslup": "^2.38.1",
+    "rolllup": "^2.38.1",
     "rollup-plugin-commonjs": "^8.3.0",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-builtins": "^2.1.2",
