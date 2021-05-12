@@ -221,10 +221,10 @@ class QrcodeDecoder {
       imgDom = img;
     } else if (typeof img === 'string') {
       imgDom = document.createElement('img');
-      imgDom.src = img;
       if (options.crossOrigin) {
         imgDom.crossOrigin = options.crossOrigin;
       }
+      imgDom.src = img;
       const proms = () =>
         new Promise((resolve) => {
           imgDom!.onload = () => resolve(true);
