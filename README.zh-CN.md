@@ -1,7 +1,8 @@
 # [qrcode-decoder](https://github.com/yugasun/qrcode-decoder)
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yugasun/qrcode-decoder/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/qrcode-decoder)](http://www.npmtrends.com/qrcode-decoder)
 [![NPM downloads](http://img.shields.io/npm/dm/qrcode-decoder.svg?style=flat-square)](http://www.npmtrends.com/qrcode-decoder)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yugasun/qrcode-decoder/blob/master/LICENSE)
 
 简体中文 | [English](./README.md)
 
