@@ -28,7 +28,6 @@
     <script src="./index.min.js"></script>
     <script type="module">
       var vConsole = new VConsole();
-      console.log('Hello world');
       function main() {
         var qr = new QrcodeDecoder();
 
@@ -48,7 +47,6 @@
         };
 
         btn2.onclick = async () => {
-          console.log('img2', img2);
           // you can also decode from image path
           // const code = await qr.decodeFromImage('./assets/qrcode.png');
           const code = await qr.decodeFromImage(img2.value, {
