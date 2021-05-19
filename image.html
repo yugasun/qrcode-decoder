@@ -9,13 +9,18 @@
   <body>
     <section>
       <h3>Same domain image</h3>
-      <img src="./assets/qrcode.png" alt="qr code" /><br />
+      <img id="img1" src="./assets/qrcode.png" alt="qr code" /><br />
       <button id="decode1">Decode!</button><br />
       <span id="result1"></span><br />
     </section>
     <hr />
     <section>
       <h3>Different domain image</h3>
+      <input
+        id="img2"
+        value="https://yugasun.com/static/wechat.jpg"
+        style="width: 400px"
+      /><br />
       <button id="decode2">Decode!</button><br />
       <span id="result2"></span><br />
     </section>
@@ -31,30 +36,31 @@
         var btn2 = document.querySelector('button#decode2');
         var result1 = document.querySelector('#result1');
         var result2 = document.querySelector('#result2');
-        var img = document.querySelector('img');
+        var img1 = document.querySelector('#img1');
+        var img2 = document.querySelector('#img2');
 
         btn1.onclick = async () => {
           // you can also decode from image path
           // const code = await qr.decodeFromImage('./assets/qrcode.png');
-          const code = await qr.decodeFromImage(img);
+          const code = await qr.decodeFromImage(img1);
           console.log(code);
           result1.innerText = code.data;
         };
 
         btn2.onclick = async () => {
+          console.log('img2', img2);
           // you can also decode from image path
           // const code = await qr.decodeFromImage('./assets/qrcode.png');
-          const code = await qr.decodeFromImage(
-            'https://yugasun.com/static/wechat.jpg',
-            {
-              crossOrigin: 'anonymous',
-            },
-          );
+          const code = await qr.decodeFromImage(img2.value, {
+            crossOrigin: 'anonymous',
+          });
           console.log(code);
           result2.innerText = code.data;
         };
       }
-      main();
+      window.onload = () => {
+        main();
+      };
     </script>
   </body>
 </html>
