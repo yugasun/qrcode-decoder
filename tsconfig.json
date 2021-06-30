@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
     "baseUrl": ".",
     "composite": true,
     "declaration": true,
@@ -14,9 +15,6 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "sourceMap": false,
-    "paths": {
-      "*": ["typings/*", "includes/*"]
-    },
     "resolveJsonModule": true,
     "noUnusedLocals": true,
     "strict": true,
