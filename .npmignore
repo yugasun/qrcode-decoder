@@ -20,3 +20,10 @@ tsconfig.json
 tsconfig.base.json
 .rpt2_cache
 .vscode
+/demo
+/doc
+/scripts
+tslint.json
+yarn-error.log
+.babelrc
+yarn.lock
