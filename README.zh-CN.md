@@ -38,7 +38,7 @@ import QrcodeDecoder from 'qrcode-decoder';
 如果你是浏览器环境
 
 ```html
-<script src="https://unpkg.com/qrcode-decoder"></script>
+<script src="https://unpkg.com/qrcode-decoder@0.3.1/dist/index.min.js"></script>
 ```
 
 ## 示例
