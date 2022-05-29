@@ -31,7 +31,13 @@
           throw new Error('Canvas and getUserMedia are required');
         }
 
-        let code = await qr.decodeFromCamera(video);
+        let code = await qr.decodeFromCamera(video,
+          // you can customize your camera size like below
+          // {
+          //   width: 400,
+          //   height: 400,
+          // }
+        );
         console.log('code', code);
         result.innerText = 'Result: ' + code.data;
       }

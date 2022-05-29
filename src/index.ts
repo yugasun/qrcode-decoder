@@ -1,6 +1,11 @@
 import { Options } from 'jsqr';
 import jsQR from 'jsqr';
 
+const videoSize = {
+  width: { min: 360, ideal: 720, max: 1080 },
+  height: { min: 360, ideal: 720, max: 1080 },
+};
+
 class QrcodeDecoder {
   timerCapture: null | NodeJS.Timeout;
   canvasElem: null | HTMLCanvasElement;
@@ -20,7 +25,7 @@ class QrcodeDecoder {
     this.getUserMediaHandler = null;
     this.videoConstraints = {
       // default use rear camera
-      video: { facingMode: { exact: 'environment' } },
+      video: { ...videoSize, facingMode: { exact: 'environment' } },
       audio: false,
     };
 
@@ -150,7 +155,7 @@ class QrcodeDecoder {
    *  inversionAttempts - (attemptBoth (default), dontInvert, onlyInvert, or invertFirst)
    *  refer to jsqr options: https://github.com/cozmo/jsQR
    */
-  async decodeFromCamera(videoElem: HTMLVideoElement, options = {}) {
+  async decodeFromCamera(videoElem: HTMLVideoElement, options: any = {}) {
     const opts = {
       ...this.defaultOption,
       ...options,
@@ -169,7 +174,13 @@ class QrcodeDecoder {
         console.log('[OverconstrainedError] Can not use rear camera.');
 
         stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
+          video: {
+            ...videoSize,
+            ...{
+              width: opts.width,
+              height: opts.height,
+            },
+          },
           audio: false,
         });
       } else {
