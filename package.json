@@ -3,6 +3,8 @@
   "version": "0.3.0",
   "description": "Tool for decoding qrcode",
   "main": "dist/index.js",
+  "browser": "dist/index.min.js",
+  "unpkg": "dist/index.min.js",
   "module": "dist/index.esm.js",
   "sideEffects": false,
   "scripts": {
