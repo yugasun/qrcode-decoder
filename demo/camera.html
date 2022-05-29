@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>QrcodeDecoder - Camera</title>
-  </head>
-  <body>
-    <button id="start">Start</button> <button id="stop">Stop</button><br />
-    <span id="result">Click start to scan qrcode.</span><br />
-    <hr />
-    <video id="video" autoplay></video>
 
-    <script src="./lib/vconsole.min.js"></script>
-    <script src="./index.min.js"></script>
-    <script type="text/javascript">
-      var vConsole = new VConsole();
-      console.log('Hello world');
-      function main() {
-        var qr = new QrcodeDecoder();
-        var video = document.querySelector('#video');
-        var start = document.querySelector('#start');
-        var stop = document.querySelector('#stop');
-        var result = document.querySelector('#result');
-        async function startScan() {
-          if (!qr.isCanvasSupported()) {
-            alert("Your browser doesn't match the required specs.");
-            throw new Error('Canvas and getUserMedia are required');
-          }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>QrcodeDecoder - Camera</title>
+</head>
 
-          let code = await qr.decodeFromCamera(video);
-          console.log('code', code);
-          result.innerText = 'Result: ' + code.data;
+<body>
+  <button id="start">Start</button> <button id="stop">Stop</button><br />
+  <span id="result">Click start to scan qrcode.</span><br />
+  <hr />
+  <video id="video" autoplay></video>
+
+  <script src="./lib/vconsole.min.js"></script>
+  <script src="./lib/index.min.js"></script>
+  <script type="text/javascript">
+    var vConsole = new VConsole();
+    console.log('Hello world');
+    function main() {
+      var qr = new QrcodeDecoder();
+      var video = document.querySelector('#video');
+      var start = document.querySelector('#start');
+      var stop = document.querySelector('#stop');
+      var result = document.querySelector('#result');
+      async function startScan() {
+        if (!qr.isCanvasSupported()) {
+          alert("Your browser doesn't match the required specs.");
+          throw new Error('Canvas and getUserMedia are required');
         }
-        start.onclick = startScan;
 
-        stop.onclick = function() {
-          qr.stop();
-        };
+        let code = await qr.decodeFromCamera(video);
+        console.log('code', code);
+        result.innerText = 'Result: ' + code.data;
       }
-      main();
-    </script>
-  </body>
+      start.onclick = startScan;
+
+      stop.onclick = function () {
+        qr.stop();
+      };
+    }
+    main();
+  </script>
+</body>
+
 </html>

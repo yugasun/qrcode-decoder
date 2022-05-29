@@ -9,3 +9,5 @@ tsconfig.tsbuildinfo
 coverage
 yarn.lock
 .rpt2_cache
+
+demo/lib/index.min.js

@@ -20,16 +20,6 @@ const plugins: rollup.Plugin[] = [
   commonjs(),
   typescript2({
     tsconfig: path.join(__dirname, '..', 'tsconfig.json'),
-    typescript: ts, // ensure we're using the same typescript (3.x) for rollup as for regular builds etc
-    tsconfigOverride: {
-      module: 'esnext',
-      stripInternal: true,
-      emitDeclarationOnly: false,
-      composite: false,
-      declaration: false,
-      declarationMap: false,
-      sourceMap: false,
-    },
   }),
 ];
 
@@ -77,7 +67,7 @@ async function bundleAio() {
       uglify({
         compress: {
           drop_debugger: true,
-          drop_console: true,
+          drop_console: false,
         },
       }),
     ],
@@ -86,7 +76,7 @@ async function bundleAio() {
     file: 'dist/index.min.js',
     name: 'QrcodeDecoder',
     format: 'iife',
-    sourcemap: false,
+    sourcemap: true,
   });
 }
 

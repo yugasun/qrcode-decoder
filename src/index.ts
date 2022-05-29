@@ -19,7 +19,8 @@ class QrcodeDecoder {
     this.videoElem = null;
     this.getUserMediaHandler = null;
     this.videoConstraints = {
-      video: true,
+      // default use rear camera
+      video: { facingMode: { exact: 'environment' } },
       audio: false,
     };
 
@@ -160,10 +161,23 @@ class QrcodeDecoder {
       throw new Error("Couldn't get video from camera");
     }
 
+    let stream: MediaStream;
     try {
-      const stream = await navigator.mediaDevices.getUserMedia(
-        this.videoConstraints,
-      );
+      stream = await navigator.mediaDevices.getUserMedia(this.videoConstraints);
+    } catch (e) {
+      if ((e as OverconstrainedError).name === 'OverconstrainedError') {
+        console.log('[OverconstrainedError] Can not use rear camera.');
+
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: false,
+        });
+      } else {
+        throw e;
+      }
+    }
+
+    if (stream) {
       videoElem.srcObject = stream;
       // videoElem.src = window.URL.createObjectURL(stream);
       this.videoElem = videoElem;
@@ -171,8 +185,6 @@ class QrcodeDecoder {
 
       const code = await this.decodeFromVideo(videoElem, opts);
       return code;
-    } catch (e) {
-      throw e;
     }
   }
 

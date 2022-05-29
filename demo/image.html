@@ -1,64 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>QrcodeDecoder - Image</title>
-  </head>
-  <body>
-    <section>
-      <h3>Same domain image</h3>
-      <img id="img1" src="./assets/qrcode.png" alt="qr code" /><br />
-      <button id="decode1">Decode!</button><br />
-      <span id="result1"></span><br />
-    </section>
-    <hr />
-    <section>
-      <h3>Different domain image</h3>
-      <input
-        id="img2"
-        value="https://yugasun.com/static/wechat.jpg"
-        style="width: 400px"
-      /><br />
-      <button id="decode2">Decode!</button><br />
-      <span id="result2"></span><br />
-    </section>
-    <script src="./lib/vconsole.min.js"></script>
-    <script src="./index.min.js"></script>
-    <script type="module">
-      var vConsole = new VConsole();
-      function main() {
-        var qr = new QrcodeDecoder();
 
-        var btn1 = document.querySelector('button#decode1');
-        var btn2 = document.querySelector('button#decode2');
-        var result1 = document.querySelector('#result1');
-        var result2 = document.querySelector('#result2');
-        var img1 = document.querySelector('#img1');
-        var img2 = document.querySelector('#img2');
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>QrcodeDecoder - Image</title>
+</head>
 
-        btn1.onclick = async () => {
-          // you can also decode from image path
-          // const code = await qr.decodeFromImage('./assets/qrcode.png');
-          const code = await qr.decodeFromImage(img1);
-          console.log(code);
-          result1.innerText = code.data;
-        };
+<body>
+  <section>
+    <h3>Same domain image</h3>
+    <img id="img1" src="./assets/qrcode.png" alt="qr code" /><br />
+    <button id="decode1">Decode!</button><br />
+    <span id="result1"></span><br />
+  </section>
+  <hr />
+  <section>
+    <h3>Different domain image</h3>
+    <input
+      id="img2"
+      value="https://yugasun.com/static/wechat.jpg"
+      style="width: 400px" /><br />
+    <button id="decode2">Decode!</button><br />
+    <span id="result2"></span><br />
+  </section>
+  <script src="./lib/vconsole.min.js"></script>
+  <script src="./lib/index.min.js"></script>
+  <script type="module">
+    var vConsole = new VConsole();
+    function main() {
+      var qr = new QrcodeDecoder();
 
-        btn2.onclick = async () => {
-          // you can also decode from image path
-          // const code = await qr.decodeFromImage('./assets/qrcode.png');
-          const code = await qr.decodeFromImage(img2.value, {
-            crossOrigin: 'anonymous',
-          });
-          console.log(code);
-          result2.innerText = code.data;
-        };
-      }
-      window.onload = () => {
-        main();
+      var btn1 = document.querySelector('button#decode1');
+      var btn2 = document.querySelector('button#decode2');
+      var result1 = document.querySelector('#result1');
+      var result2 = document.querySelector('#result2');
+      var img1 = document.querySelector('#img1');
+      var img2 = document.querySelector('#img2');
+
+      btn1.onclick = async () => {
+        // you can also decode from image path
+        // const code = await qr.decodeFromImage('./assets/qrcode.png');
+        const code = await qr.decodeFromImage(img1);
+        console.log(code);
+        result1.innerText = code.data;
       };
-    </script>
-  </body>
+
+      btn2.onclick = async () => {
+        // you can also decode from image path
+        // const code = await qr.decodeFromImage('./assets/qrcode.png');
+        const code = await qr.decodeFromImage(img2.value, {
+          crossOrigin: 'anonymous',
+        });
+        console.log(code);
+        result2.innerText = code.data;
+      };
+    }
+    window.onload = () => {
+      main();
+    };
+  </script>
+</body>
+
 </html>
