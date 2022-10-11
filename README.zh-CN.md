@@ -23,10 +23,10 @@
 
 ## 使用者指南
 
-通过 npm 下载安装代码
+通过 pnpm 下载安装代码
 
 ```bash
-$ npm install --save qrcode-decoder
+$ pnpm install --save qrcode-decoder
 ```
 
 如果你是 webpack 等环境
@@ -96,31 +96,31 @@ qr.decodeFromCamera(videoElem).then((res) => {
 首次运行需要先安装依赖
 
 ```bash
-$ npm install
+$ pnpm install
 ```
 
 一键打包生成生产代码
 
 ```bash
-$ npm run build
+$ pnpm run build
 ```
 
 运行单元测试，浏览器环境需要手动测试，位于`test/browser`
 
 ```bash
-$ npm test
+$ pnpm test
 ```
 
 修改 package.json 中的版本号，修改 README.md 中的版本号，修改 CHANGELOG.md，然后发布新版
 
 ```bash
-$ npm run release
+$ pnpm run release
 ```
 
-将新版本发布到 npm
+将新版本发布到 pnpm
 
 ```bash
-$ npm publish
+$ pnpm publish
 ```
 
 ## License

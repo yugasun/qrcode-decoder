@@ -23,10 +23,10 @@ A tool for decoding qrcode.
 
 ## Guide
 
-Use `npm` to install.
+Use `pnpm` to install.
 
 ```bash
-$ npm install --save qrcode-decoder
+$ pnpm install --save qrcode-decoder
 ```
 
 Using in webpack:
@@ -96,31 +96,31 @@ Stops the current `qr` from searching for a QRCode.
 Install dependencies:
 
 ```bash
-$ npm install
+$ pnpm install
 ```
 
 Build code:
 
 ```bash
-$ npm run build
+$ pnpm run build
 ```
 
 Run unit test:
 
 ```bash
-$ npm test
+$ pnpm test
 ```
 
 Modify version in `package.json`, run `release` script:
 
 ```bash
-$ npm run release
+$ pnpm run release
 ```
 
 Publish
 
 ```bash
-$ npm publish
+$ pnpm publish
 ```
 
 ## License
