@@ -8,6 +8,7 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
+  "packageManager": "pnpm@7.11.0",
   "scripts": {
     "build": "ts-node -P scripts/tsconfig.json scripts/bundle.ts commonjs,esm,aio && pnpm run dts && pnpm run copy-file",
     "dts": "tsc src/index.ts --declaration --emitDeclarationOnly --outDir './dist'",
