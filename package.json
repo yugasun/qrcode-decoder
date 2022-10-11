@@ -1,6 +1,6 @@
 {
   "name": "qrcode-decoder",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Tool for decoding qrcode",
   "main": "dist/index.js",
   "browser": "dist/index.min.js",
