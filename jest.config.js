@@ -1,5 +1,11 @@
+const isDebug = process.env.DEBUG === 'true';
+
 module.exports = {
   verbose: true,
+  silent: !isDebug,
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
   testTimeout: 60000,
   transform: {
     '^.+\\.tsx?$': 'ts-jest',

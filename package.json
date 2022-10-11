@@ -6,9 +6,11 @@
   "browser": "dist/index.min.js",
   "unpkg": "dist/index.min.js",
   "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "ts-node -P scripts/tsconfig.json scripts/bundle.ts umd,esm,aio && npm run copy-file",
+    "build": "ts-node -P scripts/tsconfig.json scripts/bundle.ts commonjs,esm,aio && pnpm run dts && pnpm run copy-file",
+    "dts": "tsc src/index.ts --declaration --emitDeclarationOnly --outDir './dist'",
     "prettier": "prettier --check '**/*.{ts,tsx,md}' --config .prettierrc",
     "prettier:fix": "prettier --write '**/*.{ts,tsx,md}' --config .prettierrc",
     "test": "jest",
