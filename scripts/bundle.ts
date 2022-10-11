@@ -59,6 +59,25 @@ async function bundleUmd() {
   });
 }
 
+async function bundleCommonjs() {
+  const bundle = await rollup.rollup({
+    input: path.join(process.cwd(), 'src/index.ts'),
+    plugins: [...plugins],
+    external: ['jsqr'],
+  });
+  await bundle.write({
+    file: 'dist/index.js',
+    exports: 'named',
+    name: 'QrcodeDecoder',
+    format: 'commonjs',
+    sourcemap: false,
+    globals: {
+      jsqr: 'jsqr',
+      tslib: 'tslib',
+    },
+  });
+}
+
 async function bundleAio() {
   const bundle = await rollup.rollup({
     input: path.join(process.cwd(), 'src/index.ts'),
@@ -98,6 +117,14 @@ async function bundle() {
       logBundle(`Creating umd`);
 
       await bundleUmd();
+    }
+
+    if (outputs.indexOf('commonjs') === -1) {
+      logBundle(`Skipping commonjs`);
+    } else {
+      logBundle(`Creating commonjs`);
+
+      await bundleCommonjs();
     }
 
     if (outputs.indexOf('aio') === -1) {
