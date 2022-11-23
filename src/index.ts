@@ -229,7 +229,7 @@ class QrcodeDecoder {
    *  refer to jsqr options: https://github.com/cozmo/jsQR
    */
   async decodeFromImage(
-    img: HTMLImageElement,
+    img: HTMLImageElement | string,
     options: { crossOrigin?: string } = {},
   ) {
     let imgDom: HTMLImageElement | null = null;
@@ -237,12 +237,8 @@ class QrcodeDecoder {
       ...this.defaultOption,
       ...options,
     };
-    if (+img.nodeType > 0) {
-      if (!img.src) {
-        throw new Error('The ImageElement must contain a src');
-      }
-      imgDom = img;
-    } else if (typeof img === 'string') {
+
+    if (typeof img === 'string') {
       imgDom = document.createElement('img');
       if (options.crossOrigin) {
         imgDom.crossOrigin = options.crossOrigin;
@@ -253,6 +249,11 @@ class QrcodeDecoder {
           imgDom!.onload = () => resolve(true);
         });
       await proms();
+    } else if (+img.nodeType > 0) {
+      if (!img.src) {
+        throw new Error('The ImageElement must contain a src');
+      }
+      imgDom = img;
     }
 
     let code = null;
