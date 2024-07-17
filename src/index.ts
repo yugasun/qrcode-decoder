@@ -1,12 +1,13 @@
-import { Options } from 'jsqr';
-import jsQR from 'jsqr';
+import jsQR, { QRCode, Options } from 'jsqr';
+
+export type CodeResult = QRCode | null;
 
 const videoSize = {
   width: { min: 360, ideal: 720, max: 1080 },
   height: { min: 360, ideal: 720, max: 1080 },
 };
 
-class QrcodeDecoder {
+export class QrcodeDecoder {
   timerCapture: null | NodeJS.Timeout;
   canvasElem: null | HTMLCanvasElement;
   gCtx: null | CanvasRenderingContext2D;
@@ -100,7 +101,10 @@ class QrcodeDecoder {
    *  inversionAttempts - (attemptBoth (default), dontInvert, onlyInvert, or invertFirst)
    *  refer to jsqr options: https://github.com/cozmo/jsQR
    */
-  async _captureToCanvas(videoElem: HTMLVideoElement, options: Options) {
+  async _captureToCanvas(
+    videoElem: HTMLVideoElement,
+    options: Options,
+  ): Promise<CodeResult> {
     if (this.timerCapture) {
       clearTimeout(this.timerCapture);
     }
@@ -142,7 +146,7 @@ class QrcodeDecoder {
 
     const result = await proms();
 
-    return result;
+    return result as CodeResult;
   }
 
   /**
@@ -155,7 +159,10 @@ class QrcodeDecoder {
    *  inversionAttempts - (attemptBoth (default), dontInvert, onlyInvert, or invertFirst)
    *  refer to jsqr options: https://github.com/cozmo/jsQR
    */
-  async decodeFromCamera(videoElem: HTMLVideoElement, options: any = {}) {
+  async decodeFromCamera(
+    videoElem: HTMLVideoElement,
+    options: any = {},
+  ): Promise<CodeResult> {
     const opts = {
       ...this.defaultOption,
       ...options,
@@ -197,6 +204,8 @@ class QrcodeDecoder {
       const code = await this.decodeFromVideo(videoElem, opts);
       return code;
     }
+
+    return null;
   }
 
   /**
@@ -207,7 +216,10 @@ class QrcodeDecoder {
    *  inversionAttempts - (attemptBoth (default), dontInvert, onlyInvert, or invertFirst)
    *  refer to jsqr options: https://github.com/cozmo/jsQR
    */
-  async decodeFromVideo(videoElem: HTMLVideoElement, options = {}) {
+  async decodeFromVideo(
+    videoElem: HTMLVideoElement,
+    options = {},
+  ): Promise<CodeResult> {
     const opts = {
       ...this.defaultOption,
       ...options,
@@ -231,7 +243,7 @@ class QrcodeDecoder {
   async decodeFromImage(
     img: HTMLImageElement | string,
     options: { crossOrigin?: string } = {},
-  ) {
+  ): Promise<CodeResult> {
     let imgDom: HTMLImageElement | null = null;
     const opts = {
       ...this.defaultOption,
@@ -280,7 +292,7 @@ class QrcodeDecoder {
       return code;
     }
 
-    return false;
+    return null;
   }
 
   /**

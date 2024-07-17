@@ -11,7 +11,10 @@
     "experimentalDecorators": true,
     "preserveConstEnums": true,
     "importHelpers": false,
-    "lib": ["esnext", "dom"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "module": "ESNext",
     "moduleResolution": "node",
     "sourceMap": false,
